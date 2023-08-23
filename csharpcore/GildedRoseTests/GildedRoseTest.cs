@@ -1,18 +1,28 @@
-﻿using Xunit;
-using System.Collections.Generic;
-using GildedRoseKata;
+﻿namespace GildedRoseTests;
 
-namespace GildedRoseTests
+using FluentAssertions;
+using GildedRoseKata;
+using Xunit;
+
+public class GildedRoseTest
 {
-    public class GildedRoseTest
+    [Fact]
+    public void AgedBrieShouldAgeAndUgradesQuality()
     {
-        [Fact]
-        public void foo()
+        var item = new Item()
         {
-            IList<Item> Items = new List<Item> { new Item { Name = "foo", SellIn = 0, Quality = 0 } };
-            GildedRose app = new GildedRose(Items);
-            app.UpdateQuality();
-            Assert.Equal("fixme", Items[0].Name);
-        }
+            Name = "Aged Brie",
+            Quality = 3,
+            SellIn = 5
+        };
+        var gildedRose = new GildedRose(new[]
+        {
+            item
+        });
+        
+        gildedRose.UpdateQuality();
+
+        item.Quality.Should().Be(4);
+        item.SellIn.Should().Be(4);
     }
 }
