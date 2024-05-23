@@ -1,7 +1,8 @@
-﻿namespace GildedRoseTests;
+﻿using GildedRose;
+
+namespace GildedRoseTests;
 
 using FluentAssertions;
-using GildedRoseKata;
 using Xunit;
 
 public class GildedRoseTest
@@ -15,7 +16,7 @@ public class GildedRoseTest
             Quality = 3,
             SellIn = 5
         };
-        var gildedRose = new GildedRose(new[]
+        var gildedRose = new GildedRose.GildedRose(new[]
         {
             item
         });
